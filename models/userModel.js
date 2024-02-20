@@ -52,6 +52,10 @@ userSchema.statics.register = async function(username, email, phone, password, c
     if (emailExist) {
         throw Error("Email already exist!")
     }
+    const phoneExist = await this.findOne({phone})
+    if (phoneExist) {
+        throw Error("Phone already exist!")
+    }
 
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(password, salt)

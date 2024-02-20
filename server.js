@@ -10,6 +10,7 @@ const app = express()
 // Middlewares
 // app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
+app.use(cors());
 
 // Routes
 app.use("/auth", userRoute)
